@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 // Define the backend base URL (remove if using Vite proxy)
-const API_BASE_URL = 'http://localhost:5000';
+const API_BASE_URL = 'https://vaanisetu-scsr.onrender.com';
 
 const LoginSignupPage = () => {
   const navigate = useNavigate();
