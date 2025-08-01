@@ -10,6 +10,20 @@ Break communication barriers by enabling smooth and intelligent conversations ac
 
 ---
 
+
+## 🌐 Live URLs
+
+- **Live:** [https://vaanisetu-1.onrender.com](https://vaanisetu-1.onrender.com)
+
+  ## 🧪 Test Login Credentials
+
+Use the following test account to try the app instantly:
+
+```bash
+📧 Email:    test123@gmail.com  
+🔑 Password: 12345678
+```
+
 ## 🧠 Problem Statement
 
 In a diverse country or global setting, users often struggle to communicate effectively in different languages. Our aim was to solve this by:
