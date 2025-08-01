@@ -88,7 +88,7 @@ const SarvamAIInterface = () => {
     let attempts = 0;
     while (attempts < maxRetries) {
       try {
-        const response = await axios.post(url,'/api/sarvam/chat', {
+        const response = await axios.post(`${url}/api/sarvam/chat`, {
           model: 'sarvam-m',
           messages: [
             {
