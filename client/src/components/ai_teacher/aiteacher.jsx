@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { Mic, MicOff, FileText, Volume2 } from 'lucide-react';
 import './SarvamAIInterface.css';
-
+const url = 'https://vaanisetu-scsr.onrender.com'
 const SarvamAIInterface = () => {
   const [isListening, setIsListening] = useState(false);
   const [showCaptions, setShowCaptions] = useState(true);
@@ -88,7 +88,7 @@ const SarvamAIInterface = () => {
     let attempts = 0;
     while (attempts < maxRetries) {
       try {
-        const response = await axios.post('http://localhost:5000/api/sarvam/chat', {
+        const response = await axios.post(url,'/api/sarvam/chat', {
           model: 'sarvam-m',
           messages: [
             {
