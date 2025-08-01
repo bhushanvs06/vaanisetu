@@ -49,23 +49,24 @@ const Dashboard = () => {
       try {
         setLoading(true);
         // Fetch user data
-        const userResponse = await axios.get(url,`/api/user/${userEmail}`);
+        const userResponse = await axios.get(`${url}/api/user/${userEmail}`);
+
         setUser(userResponse.data.data);
 
         // Fetch progress data
-        const progressResponse = await axios.get(url,`/api/progress/${userEmail}`);
+        const progressResponse = await axios.get(`${url}/api/progress/${userEmail}`);
         setProgressData(progressResponse.data.data);
 
         // Fetch ranking data
-        const rankingResponse = await axios.get(url,`/api/rankings/${userEmail}`);
+        const rankingResponse = await axios.get(`${url}/api/rankings/${userEmail}`);
         setRankingData(rankingResponse.data.data);
 
         // Fetch conversation history
-        const conversationResponse = await axios.get(url,`/api/conversations/${userEmail}`);
+        const conversationResponse = await axios.get(`${url}/api/conversations/${userEmail}`);
         setConversationHistory(conversationResponse.data.data);
 
         // Fetch pie chart data
-        const pieResponse = await axios.get(url,`/api/pie-data/${userEmail}`);
+       const pieResponse = await axios.get(`${url}/api/pie-data/${userEmail}`);
         setPieData(pieResponse.data.data);
 
         setLoading(false);
