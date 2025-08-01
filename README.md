@@ -1,6 +1,6 @@
-# #vaanisetu
+## 
 
-# 🌐 Multilingual AI Communication Assistant
+# 🌐 Vaanisetu (Multilingual AI Communication Assistant)
 
 A 24-hour hackathon project developed during **CodeVerse’25** by **Team CV-15**. Our solution bridges the gap between people from different linguistic backgrounds by providing real-time voice and text translation using AI.
 
