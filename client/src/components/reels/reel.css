@@ -1,0 +1,151 @@
+main-content {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(45deg, #000000, #1a1a3a, #2c2c44, #000000); /* Added subtle blue/purple tint */
+  background-size: 400% 400%;
+  animation: gradientFade 12s ease infinite; /* Faster gradient for dynamic feel */
+  position: relative;
+  overflow: hidden;
+  will-change: background-position; /* Optimize animation performance */
+}
+
+/* Gradient fade animation */
+@keyframes gradientFade {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Particle layer 1: Smaller, faster-moving particles */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 1px, transparent 1px);
+  background-size: 25px 25px; /* Smaller particles */
+  animation: particlesFast 15s linear infinite;
+  z-index: -2; /* Behind content and second particle layer */
+  opacity: 0.4;
+}
+
+/* Particle layer 2: Larger, slower particles with pulse */
+body::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 2px, transparent 2px);
+  background-size: 40px 40px; /* Larger particles */
+  animation: particlesSlow 25s linear infinite, pulse 3s ease-in-out infinite;
+  z-index: -1; /* Behind content */
+  opacity: 0.3;
+}
+
+/* Fast particle animation */
+@keyframes particlesFast {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-1200px); /* Faster upward movement */
+  }
+}
+
+/* Slow particle animation */
+@keyframes particlesSlow {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-800px); /* Slower upward movement */
+  }
+}
+
+/* Pulse effect for larger particles */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.5; /* Subtle glow effect */
+  }
+}
+
+.reels-app {
+  width: 100%;
+  max-width: 400px; /* Narrow width for mobile-like Shorts experience */
+  height: 100vh; /* Full viewport height */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: transparent; /* Show animated background */
+  z-index: 1; /* Above background animations */
+}
+
+.reels-header {
+  font-size: 2em;
+  color: #1a503e; /* White text for contrast */
+  text-align: center;
+  padding: 15px 0;
+  margin: 0; /* Remove default margin */
+  width: 100%;
+  max-width: 400px; /* Match container width */
+}
+
+.reels-container {
+  width: 100%;
+  max-width: 400px; /* Match reels-app width */
+  height: calc(100vh - 60px); /* Adjust for header height */
+  overflow-y: auto; /* Enable vertical scrolling */
+  scroll-snap-type: y mandatory; /* Snap to each reel */
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on mobile */
+  scrollbar-width: none; /* Hide scrollbar */
+}
+
+.reels-container::-webkit-scrollbar {
+  display: none; /* Hide scrollbar in WebKit browsers */
+}
+
+.reel-card {
+  width: 100%;
+  height: 100vh; /* Each reel takes full viewport height */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  scroll-snap-align: start; /* Snap to top of each reel */
+  background-color: #1a1a1a; /* Dark gray for individual reels */
+  border-bottom: 1px solid #333; /* Separator between reels */
+}
+
+.reel-title {
+  font-size: 1.5em;
+  color: #fff;
+  text-align: center;
+  margin: 0 0 15px 0; /* Consistent spacing below title */
+  width: 100%;
+  max-width: 360px; /* Match video width */
+}
+
+.reel-video {
+  width: 100%;
+  max-width: 360px; /* Slightly smaller for padding */
+  aspect-ratio: 9 / 16; /* Vertical video aspect ratio */
+  border-radius: 10px; /* Rounded corners */
+}

@@ -1,0 +1,507 @@
+/* Gradient fade animation */
+@keyframes gradientFade {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Particle layer 1: Smaller, faster-moving particles */
+body::before {
+  content: '';
+  position: fixed; /* Fixed to stay in place while scrolling */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(0, 191, 143, 0.2) 1px, transparent 1px);
+  background-size: 25px 25px;
+  animation: particlesFast 15s linear infinite;
+  z-index: -2;
+  opacity: 0.4;
+}
+
+/* Particle layer 2: Larger, slower particles with pulse */
+body::after {
+  content: '';
+  position: fixed; /* Fixed to stay in place while scrolling */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(44, 83, 100, 0.3) 2px, transparent 2px);
+  background-size: 40px 40px;
+  animation: particlesSlow 25s linear infinite, pulse 3s ease-in-out infinite;
+  z-index: -1;
+  opacity: 0.3;
+}
+
+/* Fast particle animation */
+@keyframes particlesFast {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-1200px);
+  }
+}
+
+/* Slow particle animation */
+@keyframes particlesSlow {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-800px);
+  }
+}
+
+/* Pulse effect for larger particles */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.sarvam-ai-container {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(180deg, #0F2027 0%, #2C5364 50%, #00BF8F 100%);
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.main-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  border: 3px solid #00BF8F;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 20px;
+  padding: 20px;
+  min-height: 600px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.transcript-section,
+.word-meanings-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.center-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+}
+
+.section-title {
+  color: #0F2027;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.transcript-box,
+.meaning-box {
+  background: linear-gradient(135deg, #2C5364 0%, #0F2027 100%);
+  border-radius: 12px;
+  padding: 15px;
+  flex: 1;
+  overflow-y: auto;
+  max-height: 400px;
+  color: rgb(0, 0, 0);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.transcript-item {
+  margin-bottom: 12px;
+  padding: 8px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  border-left: 3px solid #00BF8F;
+}
+
+.ai-item {
+  border-left-color: #00BF8F;
+}
+
+.user-item {
+  border-left-color: #2C5364;
+}
+
+.ai-label,
+.user-label {
+  font-weight: bold;
+}
+
+.ai-label {
+  color: #00BF8F;
+}
+
+.user-label {
+  color: #2C5364;
+}
+
+.meaning-item {
+  margin-bottom: 12px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  border-left: 3px solid #00BF8F;
+}
+
+.kannada-word {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 4px;
+  color: #00BF8F;
+}
+
+.english-meaning {
+  font-size: 13px;
+  color: #e8f4f8;
+}
+
+.placeholder-text {
+  color: rgba(255, 255, 255, 0.7);
+  font-style: italic;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.avatar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #2C5364, #00BF8F);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(0, 0, 0);
+  font-size: 24px;
+  font-weight: bold;
+  border: 4px solid #fff;
+  box-shadow: 0 10px 30px rgba(0, 191, 143, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.avatar-speaking {
+  animation: pulse 1.5s infinite;
+  box-shadow: 0 0 30px rgba(0, 191, 143, 0.8);
+}
+
+.avatar-text {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.speaking-icon {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: #00BF8F;
+  border-radius: 50%;
+  padding: 8px;
+  color: white;
+}
+
+.avatar-label {
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #0F2027;
+}
+
+.caption-container {
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.caption-bar {
+  background: linear-gradient(135deg, #0F2027 0%, #2C5364 100%);
+  border-radius: 25px;
+  padding: 12px 20px;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 4px 15px rgba(15, 32, 39, 0.3);
+}
+
+.caption-text {
+  font-size: 16px;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.caption-placeholder {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+  font-style: italic;
+}
+
+.controls-container {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.control-button {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid #00BF8F;
+  background-color: white;
+  color: #00BF8F;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 191, 143, 0.2);
+}
+
+.control-button.active {
+  background-color: #00BF8F;
+  color: white;
+  transform: scale(1.1);
+}
+
+.status-bar {
+  max-width: 1200px;
+  margin: 20px auto 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 25px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  font-size: 14px;
+  color: #0F2027;
+}
+
+.status-item {
+  font-weight: 500;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.app-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 20px auto; /* Center container */
+  padding: 20px;
+  text-align: center; /* Center all content */
+  background-color: transparent; /* Show animated background */
+  z-index: 1;
+  min-height: 100vh; /* Ensure container spans at least viewport height */
+}
+
+.quiz-container {
+  background: rgba(255, 255, 255, 0.95); /* Semi-transparent for readability */
+  border-radius: 20px;
+  border: 2px solid #00BF8F;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  padding: 30px;
+  text-align: center;
+  overflow-y: auto; /* Enable vertical scrolling */
+  max-height: calc(100vh - 40px); /* Account for padding/margins */
+  scrollbar-width: none; /* Hide scrollbar for Firefox */
+}
+
+.quiz-container::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for WebKit browsers */
+}
+
+.title {
+  font-size: 3em;
+  background: linear-gradient(135deg, #0F2027, #00BF8F);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0 0 20px 0;
+  font-weight: bold;
+}
+
+.selector-container {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.label {
+  font-size: 1.2em;
+  color: #0F2027;
+  margin-right: 10px;
+  display: inline-block; /* Align label with select */
+  vertical-align: middle;
+  font-weight: 600;
+}
+
+.select {
+  padding: 12px;
+  font-size: 1em;
+  border: 2px solid #00BF8F;
+  border-radius: 8px;
+  width: 200px;
+  background-color: #423c3c;
+  cursor: pointer;
+  vertical-align: middle;
+  transition: all 0.3s ease;
+}
+
+.select:focus {
+  outline: none;
+  border-color: #2C5364;
+  box-shadow: 0 0 10px rgba(0, 191, 143, 0.3);
+}
+
+.section-title {
+  font-size: 1.8em;
+  color: #0F2027;
+  margin: 20px 0 10px;
+  font-weight: 600;
+}
+
+.question-container {
+  margin-bottom: 20px;
+  padding: 20px;
+  border: 2px solid #00BF8F;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(0, 191, 143, 0.05));
+  text-align: left; /* Left-align questions for readability */
+  box-shadow: 0 4px 15px rgba(0, 191, 143, 0.1);
+}
+
+.question-text {
+  font-size: 1.2em;
+  color: #0F2027;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.translation-text {
+  font-size: 0.9em;
+  color: #2C5364;
+  font-style: italic;
+}
+
+.options-container {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 300px; /* Center options */
+}
+
+.option-label {
+  display: block; /* Stack options vertically */
+  margin-bottom: 10px;
+  font-size: 1em;
+  color: #0F2027;
+  text-align: left; /* Align text left for readability */
+  padding: 8px;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.option-label:hover {
+  background-color: rgba(0, 191, 143, 0.1);
+}
+
+.radio-input {
+  margin-right: 10px;
+  vertical-align: middle;
+  cursor: pointer;
+  accent-color: #00BF8F;
+}
+
+.text-input {
+  padding: 12px;
+  font-size: 1em;
+  border: 2px solid #00BF8F;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto; /* Center input */
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.text-input:focus {
+  outline: none;
+  border-color: #2C5364;
+  box-shadow: 0 0 10px rgba(0, 191, 143, 0.3);
+}
+
+.button-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.submit-button,
+.reset-button {
+  padding: 12px 24px;
+  font-size: 1em;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-block; /* Align buttons side by side */
+  margin: 0 10px; /* Space buttons */
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.submit-button {
+  background: linear-gradient(135deg, #00BF8F, #2C5364);
+  color: #fff;
+}
+
+.submit-button:hover {
+  background: linear-gradient(135deg, #2C5364, #0F2027);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 191, 143, 0.3);
+}
+
+.reset-button {
+  background: linear-gradient(135deg, #2C5364, #0F2027);
+  color: #fff;
+}
+
+.reset-button:hover {
+  background: linear-gradient(135deg, #0F2027, #2C5364);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(44, 83, 100, 0.3);
+}
+
+.score-text {
+  font-size: 1.5em;
+  color: #0F2027;
+  margin-top: 20px;
+  font-weight: 600;
+}

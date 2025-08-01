@@ -1,0 +1,248 @@
+.sarvam-ai-container {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(180deg, #0F2027 0%, #2C5364 50%, #00BF8F 100%);
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.main-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  border: 3px solid #00BF8F;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 20px;
+  padding: 20px;
+  min-height: 600px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.transcript-section,
+.word-meanings-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.center-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+}
+
+.section-title {
+  color: #0F2027;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.transcript-box,
+.meaning-box {
+  background: linear-gradient(135deg, #2C5364 0%, #0F2027 100%);
+  border-radius: 12px;
+  padding: 15px;
+  flex: 1;
+  overflow-y: auto;
+  max-height: 400px;
+  color: white;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.transcript-item {
+  margin-bottom: 12px;
+  padding: 8px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  border-left: 3px solid #00BF8F;
+}
+
+.ai-item {
+  border-left-color: #00BF8F;
+}
+
+.user-item {
+  border-left-color: #2C5364;
+}
+
+.ai-label,
+.user-label {
+  font-weight: bold;
+}
+
+.ai-label {
+  color: #00BF8F;
+}
+
+.user-label {
+  color: #2C5364;
+}
+
+.meaning-item {
+  margin-bottom: 12px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  border-left: 3px solid #00BF8F;
+}
+
+.kannada-word {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 4px;
+  color: #00BF8F;
+}
+
+.english-meaning {
+  font-size: 13px;
+  color: #e8f4f8;
+}
+
+.placeholder-text {
+  color: rgba(255, 255, 255, 0.7);
+  font-style: italic;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.avatar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #2C5364, #00BF8F);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  border: 4px solid #fff;
+  box-shadow: 0 10px 30px rgba(0, 191, 143, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.avatar-speaking {
+  animation: pulse 1.5s infinite;
+  box-shadow: 0 0 30px rgba(0, 191, 143, 0.8);
+}
+
+.avatar-text {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.speaking-icon {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: #00BF8F;
+  border-radius: 50%;
+  padding: 8px;
+  color: white;
+}
+
+.avatar-label {
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #0F2027;
+}
+
+.caption-container {
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.caption-bar {
+  background: linear-gradient(135deg, #0F2027 0%, #2C5364 100%);
+  border-radius: 25px;
+  padding: 12px 20px;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 4px 15px rgba(15, 32, 39, 0.3);
+}
+
+.caption-text {
+  font-size: 16px;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.caption-placeholder {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+  font-style: italic;
+}
+
+.controls-container {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.control-button {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid #00BF8F;
+  background-color: white;
+  color: #00BF8F;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 191, 143, 0.2);
+}
+
+.control-button.active {
+  background-color: #00BF8F;
+  color: white;
+  transform: scale(1.1);
+}
+
+.status-bar {
+  max-width: 1200px;
+  margin: 20px auto 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 25px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  font-size: 14px;
+  color: #0F2027;
+}
+
+.status-item {
+  font-weight: 500;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@media (max-width: 768px) {
+  .main-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+  }
+}
