@@ -10,7 +10,11 @@ const app = express();
 
 // Configure CORS to allow requests from frontend
 app.use(cors({
-  origin: ['https://vaanisetu-1.onrender.com/'],
+  origin: ['http://localhost:5173', 'https://vaanisetu-1.onrender.com'],
+  methods: ['GET', 'POST'],
+  credentials: true
+}));
+
   methods: ['GET', 'POST'],
   credentials: true
 }));
